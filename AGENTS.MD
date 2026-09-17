@@ -21,6 +21,7 @@ patterns and architecture decisions, not generic Node.js approaches.
 - Node `>=22.21.0 <23 || >=24.5.0`. `@arcjet/nest` peers Nest 10/11; `.npmrc` has `legacy-peer-deps=true` for Nest 12
 - Prisma ORM 7 only: pin `prisma@7` and `@prisma/client@7`. Bare `npx prisma` installs Prisma 8 RC
 - Feature modules go in src/module/<name>/
+- OpenAPI schemas for feature types live in src/module/<name>/schema/. `@nestjs/swagger` serves the spec at `/docs`
 - Shared guards, interceptors, decorators go in src/common/
 - Use Nest CLI: nest g module / nest g service / nest g controller
 

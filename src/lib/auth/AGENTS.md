@@ -8,8 +8,8 @@ Better Auth with the NestJS adapter `@thallesp/nestjs-better-auth`. Email and pa
 - [auth.ts](auth.ts): CLI entry only (`export const auth`). `npx auth@1.7.5 generate --config src/lib/auth/auth.ts` needs this file
 - `AuthModule.forRootAsync` in `AppModule`, `inject: [PrismaService]`
 - `bodyParser: false` in `main.ts` (required). The adapter re-adds parsers for non auth routes
-- Global `AuthGuard`. Public routes use `@AllowAnonymous()`. Session via `@Session()`
-- [user.controller.ts](../../module/user/user.controller.ts): `GET /users/me`
+- Global `AuthGuard`. Public routes use `@AllowAnonymous()`. Session via `@Session()`. Restrict by `user.role` with `@Roles(['ADMIN'])` (value is `UserRole.ADMIN`, not `admin`)
+- [user.controller.ts](../../module/user/user.controller.ts): `GET /user/me`, `GET /user/all` (admin), `GET /user/:id`
 
 ## Rules
 
