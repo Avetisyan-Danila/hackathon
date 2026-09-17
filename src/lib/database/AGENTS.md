@@ -17,6 +17,6 @@ Import the client from `src/generated/prisma/client.js`, not from `@prisma/clien
 
 `DATABASE_URL` is the Prisma Postgres pooled TCP URL in `.env`. Do not hardcode it.
 
-No models yet. Add them in `schema.prisma`, then `npx prisma@7 migrate dev`.
+Better Auth owns `User`, `Session`, `Account`, `Verification`, and `UserRole` in `schema.prisma`. Add app models there, then `npx prisma@7 migrate dev`.
 
 _Drafted by /sync from the introducing change, worth a quick human pass._

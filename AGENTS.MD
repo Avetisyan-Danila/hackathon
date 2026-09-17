@@ -15,6 +15,7 @@ patterns and architecture decisions, not generic Node.js approaches.
   src/lib/database/prisma.module.ts + prisma.service.ts
   src/lib/mail/mail.module.ts + mail.service.ts
   src/lib/arcjet/arcjet.module.ts + arcjet.service.ts
+  src/lib/auth/create-auth.ts (Better Auth factory; `AuthModule.forRootAsync` from `@thallesp/nestjs-better-auth`)
 - Mark infrastructure modules @Global() and import once in AppModule
 - ESM (`"type": "module"`). Relative imports use `.js` suffixes (`@arcjet/nest` is ESM only)
 - Node `>=22.21.0 <23 || >=24.5.0`. `@arcjet/nest` peers Nest 10/11; `.npmrc` has `legacy-peer-deps=true` for Nest 12
@@ -49,4 +50,5 @@ State lives in files, not in chat. There is no `/remember` skill.
 
 - [src/lib/arcjet/AGENTS.md](src/lib/arcjet/AGENTS.md): Arcjet request protection
 - [src/lib/database/AGENTS.md](src/lib/database/AGENTS.md): Prisma ORM 7 and Prisma Postgres
+- [src/lib/auth/AGENTS.md](src/lib/auth/AGENTS.md): Better Auth via `@thallesp/nestjs-better-auth`
 - MCP servers: arcjet (connected), Prisma (connected)
