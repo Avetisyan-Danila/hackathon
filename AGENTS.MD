@@ -18,6 +18,7 @@ patterns and architecture decisions, not generic Node.js approaches.
 - Mark infrastructure modules @Global() and import once in AppModule
 - ESM (`"type": "module"`). Relative imports use `.js` suffixes (`@arcjet/nest` is ESM only)
 - Node `>=22.21.0 <23 || >=24.5.0`. `@arcjet/nest` peers Nest 10/11; `.npmrc` has `legacy-peer-deps=true` for Nest 12
+- Prisma ORM 7 only: pin `prisma@7` and `@prisma/client@7`. Bare `npx prisma` installs Prisma 8 RC
 - Feature modules go in src/module/<name>/
 - Shared guards, interceptors, decorators go in src/common/
 - Use Nest CLI: nest g module / nest g service / nest g controller
@@ -47,4 +48,5 @@ State lives in files, not in chat. There is no `/remember` skill.
 ## Context files
 
 - [src/lib/arcjet/AGENTS.md](src/lib/arcjet/AGENTS.md): Arcjet request protection
-- MCP servers: arcjet (connected)
+- [src/lib/database/AGENTS.md](src/lib/database/AGENTS.md): Prisma ORM 7 and Prisma Postgres
+- MCP servers: arcjet (connected), Prisma (connected)
