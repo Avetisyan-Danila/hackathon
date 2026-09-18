@@ -9,10 +9,11 @@ import {
   MinLength,
 } from 'class-validator';
 
-export class CreateHackathonDto {
+export class UpdateHackathonDto {
+  @IsOptional()
   @IsString()
   @MinLength(3)
-  name: string;
+  name?: string;
 
   @IsOptional()
   @IsString()
@@ -20,19 +21,21 @@ export class CreateHackathonDto {
   @MaxLength(1000)
   description?: string;
 
+  @IsOptional()
   @Type(() => Date)
   @IsDate()
   @MinDate(() => new Date(), {
     message: 'startsAt must be a date in the future',
   })
-  startsAt: Date;
+  startsAt?: Date;
 
+  @IsOptional()
   @Type(() => Date)
   @IsDate()
   @MinDate(() => new Date(), {
     message: 'endsAt must be a date in the future',
   })
-  endsAt: Date;
+  endsAt?: Date;
 
   @IsOptional()
   @IsBoolean()

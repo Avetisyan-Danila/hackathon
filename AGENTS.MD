@@ -56,5 +56,5 @@ Do not create `CLAUDE.md` files. Context lives in `AGENTS.md` only.
 - [src/lib/database/AGENTS.md](src/lib/database/AGENTS.md): Prisma ORM 7 and Prisma Postgres
 - [src/lib/auth/AGENTS.md](src/lib/auth/AGENTS.md): Better Auth via `@thallesp/nestjs-better-auth`
 - [src/common/AGENTS.md](src/common/AGENTS.md): Global response interceptor, ValidationPipe factory, and shared decorators
-- [src/module/hackathon/AGENTS.md](src/module/hackathon/AGENTS.md): Hackathon feature module and CreateHackathonDto
+- [src/module/hackathon/AGENTS.md](src/module/hackathon/AGENTS.md): Hackathon CRUD, CreateHackathonDto, UpdateHackathonDto
 - MCP servers: arcjet (connected), Prisma (connected)
