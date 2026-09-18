@@ -8,18 +8,23 @@ import {
 import { Reflector } from '@nestjs/core';
 import { map, type Observable } from 'rxjs';
 import { RESPONSE_MESSAGE_KEY } from '../decorators/response-message.decorator.js';
-import type { ApiResponseDto } from '../schema/api-response.schema.js';
+
+type ApiResponse<T> = {
+  statusCode: number;
+  message: string;
+  data: T | null;
+};
 
 @Injectable()
 export class ResponseInterceptor<T>
-  implements NestInterceptor<T, ApiResponseDto<T> | StreamableFile>
+  implements NestInterceptor<T, ApiResponse<T> | StreamableFile>
 {
   constructor(private readonly reflector: Reflector) {}
 
   intercept(
     context: ExecutionContext,
     next: CallHandler<T>,
-  ): Observable<ApiResponseDto<T> | StreamableFile> {
+  ): Observable<ApiResponse<T> | StreamableFile> {
     const message =
       this.reflector.getAllAndOverride<string>(RESPONSE_MESSAGE_KEY, [
         context.getHandler(),
@@ -39,7 +44,7 @@ export class ResponseInterceptor<T>
           statusCode,
           message,
           data: data ?? null,
-        } as ApiResponseDto<T>;
+        };
       }),
     );
   }

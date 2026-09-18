@@ -7,6 +7,7 @@ import { ArcjetInfraModule } from './lib/arcjet/arcjet.module.js';
 import { PrismaModule } from './lib/database/prisma.module.js';
 import { PrismaService } from './lib/database/prisma.service.js';
 import { UserModule } from './module/user/user.module.js';
+import { HackathonModule } from './module/hackathon/hackathon.module.js';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { UserModule } from './module/user/user.module.js';
       }),
     }),
     UserModule,
+    HackathonModule,
   ],
   controllers: [AppController],
   providers: [AppService],
