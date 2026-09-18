@@ -19,4 +19,6 @@ Import the client from `src/generated/prisma/client.js`, not from `@prisma/clien
 
 Better Auth owns `User`, `Session`, `Account`, `Verification`, and `UserRole` in `schema.prisma`. Add app models there, then `npx prisma@7 migrate dev`.
 
+App models use `String @id @default(cuid())`, `createdAt`/`updatedAt`, `@@map` to a snake_case table, and `@@index` on foreign keys. Name a `@relation` when `User` has more than one link to the same model. Join uniqueness is `@@unique` on the pair of foreign keys.
+
 _Drafted by /sync from the introducing change, worth a quick human pass._

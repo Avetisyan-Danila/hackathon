@@ -21,8 +21,9 @@ patterns and architecture decisions, not generic Node.js approaches.
 - Node `>=22.21.0 <23 || >=24.5.0`. `@arcjet/nest` peers Nest 10/11; `.npmrc` has `legacy-peer-deps=true` for Nest 12
 - Prisma ORM 7 only: pin `prisma@7` and `@prisma/client@7`. Bare `npx prisma` installs Prisma 8 RC
 - Feature modules go in src/module/<name>/
-- OpenAPI schemas for feature types live in src/module/<name>/schema/. `@nestjs/swagger` serves the spec at `/docs`
+- OpenAPI schemas for feature types live in src/module/<name>/schema/. Shared envelope types live in src/common/schema/. `@nestjs/swagger` serves the spec at `/docs`
 - Shared guards, interceptors, decorators go in src/common/
+- Global `ResponseInterceptor` (wired in `src/main.ts`) wraps controller JSON as `{ statusCode, message, data }`. Default message is `Success`. Override with `@ResponseMessage()`. `StreamableFile` is left as is. Document wrapped 200s with `@ApiWrappedOkResponse()`
 - Use Nest CLI: nest g module / nest g service / nest g controller
 
 ## Skills
@@ -43,6 +44,7 @@ Do not load any skill by default. Check the task first — only invoke a skill i
 ## Session continuity
 
 State lives in files, not in chat. There is no `/remember` skill.
+Do not create `CLAUDE.md` files. Context lives in `AGENTS.md` only.
 
 - **First action of every session:** read this file before doing anything else.
 - **Last action of a finished change:** run `/sync` before closing.
@@ -52,4 +54,5 @@ State lives in files, not in chat. There is no `/remember` skill.
 - [src/lib/arcjet/AGENTS.md](src/lib/arcjet/AGENTS.md): Arcjet request protection
 - [src/lib/database/AGENTS.md](src/lib/database/AGENTS.md): Prisma ORM 7 and Prisma Postgres
 - [src/lib/auth/AGENTS.md](src/lib/auth/AGENTS.md): Better Auth via `@thallesp/nestjs-better-auth`
+- [src/common/AGENTS.md](src/common/AGENTS.md): Global response interceptor and shared decorators
 - MCP servers: arcjet (connected), Prisma (connected)
